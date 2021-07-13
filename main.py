@@ -9,16 +9,16 @@ if __name__ == '__main__':
     # reads in csv file to program
     # change total_entries to account for multiple file as well as to dynamically read how many people there are
     total_entries = 0
-    for i in range(len(sys.argv) - 1):
-        with open(str(sys.argv[i + 1])) as csv_file:
+    for i in range(len(sys.argv) - 2):
+        with open(str(sys.argv[i + 2])) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
                 total_entries += 1
     # creates our emtpy matrix for holding data
     unscrubbed_data = [[0] * 9 for _ in range(total_entries)]
     line_count = 0
-    for file_num in range(len(sys.argv) - 1):
-        with open(str(sys.argv[file_num + 1])) as csv_file:
+    for file_num in range(len(sys.argv) - 2):
+        with open(str(sys.argv[file_num + 2])) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             # populates matrix with values
             for row in csv_reader:
@@ -31,6 +31,13 @@ if __name__ == '__main__':
         if unscrubbed_data[val][2] in scrubbed_data:
             continue
         scrubbed_data.append(unscrubbed_data[val])
+    # writes everyone to the main canvas page import document
+    file = open('Courses/SU2021-ccmS483457.csv', 'w')
+    file.write('user_id,role,section_id\n')
+    for p in range(1, line_count):
+        UMID = scrubbed_data[p][2]
+        file.write(UMID + ',student,SU2021-ccmS483457\n')
+
     sisid = []
     taking_classes = []
     # just opening our files
@@ -38,7 +45,7 @@ if __name__ == '__main__':
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             sisid.append(row)
-    with open('test_people_classes.csv') as csv_file:
+    with open(sys.argv[1]) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             taking_classes.append(row)
@@ -65,7 +72,7 @@ if __name__ == '__main__':
                             scrubbed_data[line_count - 1][8] = row[0]
                         break
     for row in sisid:
-        file = open('Canvas Imports/Courses/' + row[0] + '.csv', 'w')
+        file = open('Courses/' + row[0] + '.csv', 'w')
         file.write('user_id,role,section_id\n')
         for p in range(0, line_count):
             if row[0] == scrubbed_data[p][8]:
