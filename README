@@ -5,5 +5,4 @@ Welcome to the documentation for this program I wrote
         This program does support multiple input files as well as duplicate handling.
         Make sure to rename the Courses CSV's to the SISID number they are associated with or writing of data will not work
 2. Debugging
-        Most of this code is run with python's built in csv data type. There shouldn't be any big issues but if you find
-        anything, email me at ajsaxe@umich.edu
+        Most of this code is run with python's built in csv data type. There shouldn't be any big issues but if you find anything, email me at ajsaxe@umich.edu
