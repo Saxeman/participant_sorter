@@ -1,6 +1,6 @@
 Welcome to the documentation for this software I wrote
 1. Usage
-        This software will take in two inputs, enrollment.csv and participants.csv. It will then create Canvas import documents so that those in the participants tab will be exported into their respective CSV's (which are sorted by SISID in the Course folder). Formatting for the two CSV's should be as follows:
+        This script will take in two inputs, enrollment.csv and participants.csv. It will then create Canvas import documents so that those in the participants tab will be exported into their respective CSV's (which are sorted by SISID in the Course folder). Formatting for the two CSV's should be as follows:
         Enrollment.csv: First Name,Middle Name,Last Name,Email Address,Courses Taken
         Participants.csv: uniqname,UMID,GivenName,MiddleName,Surname,PersonalEmail
         
